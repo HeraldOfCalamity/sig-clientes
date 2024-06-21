@@ -22,21 +22,26 @@ function App() {
     },
   ]);
   const [mapCenter, setMapCenter] = useState({ lat: -16.290154, lng: -63.588653 });
+  const [selectedLocation, setSelectedLocation] = useState(null);
+
 
 
   const registerClient = (client) => {
     setClientes([...clientes, client]);
-  }
+  };
   const changeCenter = (key) => {
     setMapCenter({ lat: departments[key].lat, lng: departments[key].lng });
+  };
+  const handleMapClick = (location) => {
+    setSelectedLocation(location);
   };
 
   return (
     <>
       <h1>Mapa Clientes</h1>
-      <ClientRegistration onRegister={registerClient} />
+      <ClientRegistration onRegister={registerClient} selectedLocation={selectedLocation} />
       <SelectDepartment onChange={changeCenter} />
-      <MapView clientes={clientes} sectores={sectores} center={mapCenter} />
+      <MapView clientes={clientes} sectores={sectores} center={mapCenter} onClick={handleMapClick} />
     </>
   )
 }

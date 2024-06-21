@@ -2,10 +2,10 @@ import L from 'leaflet';
 // import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
 // import markerIcon from 'leaflet/dist/images/marker-icon.png';
 // import markerShadow from 'leaflet/dist/images/marker-shadow.png';
-import { MapContainer, Marker, Polygon, Popup, TileLayer, useMap } from 'react-leaflet';
+import { MapContainer, Marker, Polygon, Popup, TileLayer, useMap, useMapEvents } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css'
 import { departments } from '../map-assets/departments';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 
 
@@ -23,7 +23,24 @@ const ChangeView = ({ center }) => {
 
     return null;
 }
-const MapView = ({ clientes, sectores, center }) => {
+const LocationMarker = ({ onClick }) => {
+    const [position, setPosition] = useState(null);
+    useMapEvents({
+        click(e) {
+            setPosition(e.latlng);
+            onClick(e.latlng);
+        }
+    });
+
+    return position === null ? null : (
+        <Marker position={position}>
+            <Popup>
+                Ubicacion seleccionada: <br /> {position.lat}, {position.lng}
+            </Popup>
+        </Marker>
+    )
+};
+const MapView = ({ clientes, sectores, center, onClick }) => {
     return (
         <MapContainer
             center={center}
@@ -49,6 +66,7 @@ const MapView = ({ clientes, sectores, center }) => {
                     </Popup>
                 </Polygon>
             ))}
+            <LocationMarker onClick={onClick} />
         </MapContainer>
     );
 }

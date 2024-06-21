@@ -1,9 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const ClientRegistration = ({ onRegister }) => {
+const ClientRegistration = ({ onRegister, selectedLocation }) => {
     const [nombre, setNombre] = useState('');
     const [lat, setLat] = useState('');
     const [lng, setLng] = useState('');
+
+
+    useEffect(() => {
+        if (selectedLocation) {
+            setLat(selectedLocation.lat);
+            setLng(selectedLocation.lng);
+        }
+    }, [selectedLocation])
 
     const handleSubmit = (e) => {
         e.preventDefault();
