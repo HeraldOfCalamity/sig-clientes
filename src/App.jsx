@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import MapView from './components/MapView'
 import { departments } from './map-assets/departments';
 import SelectDepartment from './components/SelectDepartment';
+import ClientRegistration from './components/ClientRegistering';
 
 
 function App() {
@@ -22,6 +23,10 @@ function App() {
   ]);
   const [mapCenter, setMapCenter] = useState({ lat: -16.290154, lng: -63.588653 });
 
+
+  const registerClient = (client) => {
+    setClientes([...clientes, client]);
+  }
   const changeCenter = (key) => {
     setMapCenter({ lat: departments[key].lat, lng: departments[key].lng });
   };
@@ -29,6 +34,7 @@ function App() {
   return (
     <>
       <h1>Mapa Clientes</h1>
+      <ClientRegistration onRegister={registerClient} />
       <SelectDepartment onChange={changeCenter} />
       <MapView clientes={clientes} sectores={sectores} center={mapCenter} />
     </>
