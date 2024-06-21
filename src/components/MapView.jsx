@@ -26,7 +26,7 @@ const ChangeView = ({ center }) => {
 const MapView = ({ clientes, sectores, center }) => {
     return (
         <MapContainer
-            center={[departments.Cochabamba.lat, departments.Cochabamba.lng]}
+            center={center}
             zoom={6}
             style={{ height: "50vh", width: "100%" }}
         >
