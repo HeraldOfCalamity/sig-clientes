@@ -4,8 +4,9 @@ import L from 'leaflet';
 // import markerShadow from 'leaflet/dist/images/marker-shadow.png';
 import { MapContainer, Marker, Polygon, Popup, TileLayer, useMap, useMapEvents } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css'
-import { departments } from '../map-assets/departments';
+// import { departments } from '../map-assets/departments';
 import { useEffect, useState } from 'react';
+import { department_polygons } from '../map-assets/polygons';
 
 
 
@@ -40,7 +41,29 @@ const LocationMarker = ({ onClick }) => {
         </Marker>
     )
 };
-const MapView = ({ clientes, sectores, center, onClick }) => {
+const MapView = ({ clientes/*, sectores*/, center, onClick, layer }) => {
+    const renderLayer = () => {
+        if (layer === 'departamentos') {
+            return department_polygons.map((dept, idx) => (
+                <Polygon key={idx} positions={dept.positions} color='blue'>
+                    <Popup>
+                        {dept.name}
+                    </Popup>
+                </Polygon>
+            ));
+        } else if (layer === 'municipios') {
+            return municipality_polygons.map((mun, idx) => (
+                <Polygon key={idx} positions={mun.positions} color='green'>
+                    <Popup>{mun.name}</Popup>
+                </Polygon>
+            ));
+        }
+
+        return null;
+    };
+
+
+
     return (
         <MapContainer
             center={center}
@@ -59,14 +82,15 @@ const MapView = ({ clientes, sectores, center, onClick }) => {
                     </Popup>
                 </Marker>
             ))}
-            {sectores.map((sector, idx) => (
+            {/* {sectores.map((sector, idx) => (
                 <Polygon key={idx} positions={sector.positions} color={sector.color}>
                     <Popup>
                         {`Sector ${idx + 1}`}
                     </Popup>
                 </Polygon>
-            ))}
+            ))} */}
             <LocationMarker onClick={onClick} />
+            {renderLayer()}
         </MapContainer>
     );
 }
