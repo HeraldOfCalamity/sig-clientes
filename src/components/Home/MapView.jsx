@@ -7,7 +7,7 @@ import 'leaflet/dist/leaflet.css'
 
 // import { departments } from '../map-assets/departments';
 import { useEffect, useState } from 'react';
-import { department_polygons } from '../map-assets/polygons';
+import { department_polygons } from '../../map-assets/polygons';
 
 
 

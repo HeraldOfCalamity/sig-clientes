@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
-import MapView from './components/MapView'
+import MapView from './components/Home/MapView'
 import { departments } from './map-assets/departments';
-import SelectDepartment from './components/SelectDepartment';
-import ClientRegistration from './components/ClientRegistering';
-import SelectLayer from './components/SelectLayer';
+import SelectDepartment from './components/Home/SelectDepartment';
+import ClientRegistration from './components/Home/ClientRegistering';
+import SelectLayer from './components/Home/SelectLayer';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import LoginView from './components/Login/LoginView';
 import RegisterView from './components/Register/RegisterView';
@@ -44,7 +44,6 @@ function App() {
           path='/'
           element={
             isAuthenticated ? (
-
               <div>
                 <h1>Mapa Clientes</h1>
                 <ClientRegistration onRegister={registerClient} selectedLocation={selectedLocation} />

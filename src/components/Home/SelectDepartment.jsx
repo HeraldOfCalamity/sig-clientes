@@ -1,4 +1,4 @@
-import { departments } from "../map-assets/departments";
+import { departments } from "../../map-assets/departments";
 
 const SelectDepartment = ({ onChange }) => {
     return (
