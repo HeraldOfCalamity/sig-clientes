@@ -4,9 +4,10 @@ import { departments } from './map-assets/departments';
 import SelectDepartment from './components/Home/SelectDepartment';
 import ClientRegistration from './components/Home/ClientRegistering';
 import SelectLayer from './components/Home/SelectLayer';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate, Link } from 'react-router-dom';
 import LoginView from './components/Login/LoginView';
 import RegisterView from './components/Register/RegisterView';
+import Dashboard from './components/Home/Dashboard';
 
 
 function App() {
@@ -18,6 +19,9 @@ function App() {
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [layer, setLayer] = useState('normal');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [admins, setAdmins] = useState([
+    { email: 'admin@leaflet.com', password: 'admin123' }
+  ])
 
 
   const registerClient = (client) => {
@@ -32,14 +36,27 @@ function App() {
   const handleLayerChange = (layer) => {
     setLayer(layer);
   }
+  const registerAdmin = (admin) => {
+    setAdmins([...admins, admin]);
+  }
 
   return (
     <Router>
+      <div><nav>
+        <ul>
+          <li>
+            <Link to={'/'}>Mapa de Clientes</Link>
+          </li>
+          <li>
+            <Link to={'/dashboard'}>Dashboard</Link>
+          </li>
+        </ul>
+      </nav></div>
       <Routes>
         <Route path='/login' element={
-          <LoginView onLogin={() => setIsAuthenticated(true)} />
+          <LoginView whiteList={admins} onLogin={() => setIsAuthenticated(true)} />
         } />
-        <Route path='/register' element={<RegisterView />} />
+        <Route path='/register' element={<RegisterView onAdminRegister={registerAdmin} />} />
         <Route
           path='/'
           element={
@@ -50,6 +67,7 @@ function App() {
                 <SelectDepartment onChange={changeCenter} />
                 <SelectLayer onChange={handleLayerChange} />
                 <MapView clientes={clientes} /*sectores={sectores}*/ center={mapCenter} onClick={handleMapClick} layer={layer} />
+                <Dashboard />
               </div>
             ) : (
               <Navigate to='/login' />
