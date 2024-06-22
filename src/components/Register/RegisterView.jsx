@@ -13,8 +13,12 @@ const RegisterView = ({ onAdminRegister }) => {
             alert('Las passwords no coinciden');
             return;
         }
+        const admin = {
+            email,
+            password,
+        }
 
-        console.log('logged in');
+        onAdminRegister(admin);
         navigate('/login');
     }
 

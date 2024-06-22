@@ -39,6 +39,7 @@ function App() {
   const registerAdmin = (admin) => {
     setAdmins([...admins, admin]);
   }
+  console.log(admins)
 
   return (
     <Router>
