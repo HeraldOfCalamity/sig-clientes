@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import './index.css'
 import { useNavigate } from 'react-router-dom'
+
 
 const LoginView = ({ onLogin }) => {
     const [email, setEmail] = useState('');
@@ -14,8 +14,8 @@ const LoginView = ({ onLogin }) => {
         navigate('/');
     }
     return (
-        <div className='container'>
-            <h1 className="my-group-title">My Group XD</h1>
+        <div>
+            <h1>My Group XD</h1>
             <form onSubmit={handleSubmit}>
                 <h2 className="login-title">Inicio de sesión</h2>
                 <label htmlFor="email">Email:</label>
