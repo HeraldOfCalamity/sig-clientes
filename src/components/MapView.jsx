@@ -1,9 +1,10 @@
-import L from 'leaflet';
+// import L from 'leaflet';
 // import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
 // import markerIcon from 'leaflet/dist/images/marker-icon.png';
 // import markerShadow from 'leaflet/dist/images/marker-shadow.png';
 import { MapContainer, Marker, Polygon, Popup, TileLayer, useMap, useMapEvents } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css'
+
 // import { departments } from '../map-assets/departments';
 import { useEffect, useState } from 'react';
 import { department_polygons } from '../map-assets/polygons';
