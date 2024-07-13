@@ -49,7 +49,8 @@ const MapView = ({ clientes/*, sectores*/, center, onClick, layer }) => {
                 <Polygon key={idx} positions={dept.positions} color='blue'>
                     <Popup>
                         {dept.name} <br />
-                        Population: {dept.population}
+                        Population: {dept.population} <br />
+                        Area: {dept.area}
                     </Popup>
                 </Polygon>
             ));

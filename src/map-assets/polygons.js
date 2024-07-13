@@ -2,6 +2,7 @@ export const department_polygons = [
     {
         name: 'La Paz',
         population: 2706351,
+        area: 133985,
         positions: [
             [-12.491556, -68.656375],
             [-12.491138, -68.607905],
@@ -403,6 +404,7 @@ export const department_polygons = [
     {
         name: 'Sucre',
         population: 576153,
+        area: 51524,
         positions: [
             [-20.985159, -62.267198],
             [-20.997392, -64.001563],
@@ -615,6 +617,7 @@ export const department_polygons = [
     {
         name: 'Santa Cruz',
         population: 2655084,
+        area: 370621,
         positions: [
             [-20.562354, -62.265587],
             [
@@ -974,6 +977,7 @@ export const department_polygons = [
     {
         name: 'Cochabamba',
         population: 1758143,
+        area: 55631,
         positions: [
             [-15.797419, -64.776874],
             [-16.062647, -64.706646
@@ -1173,6 +1177,7 @@ export const department_polygons = [
     {
         name: 'Tarija',
         population: 482196,
+        area: 37623,
         positions: [
 
 
@@ -1316,6 +1321,7 @@ export const department_polygons = [
     {
         name: 'Pando',
         population: 110436,
+        area: 63827,
         positions: [
             [-10.972366, -69.572544],
             [-11.032471, -69.529322],
@@ -1594,6 +1600,7 @@ export const department_polygons = [
     {
         name: 'Beni',
         population: 421196,
+        area: 213564,
         positions: [
             [-15.780661, -66.859553],
             [-15.793507, -66.833387],
@@ -1935,6 +1942,7 @@ export const department_polygons = [
     {
         name: 'Oruro',
         population: 494178,
+        area: 53588,
         positions: [
             [-19.372541, -68.436123
 
@@ -2096,6 +2104,7 @@ export const department_polygons = [
     {
         name: 'Potosi',
         population: 823517,
+        area: 118218,
         positions: [
             [-18.134919, -66.759623],
             [-18.113241, -66.723128],
